@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to the external CSS file -->
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">Multimodal Sentiment Analysis</div>
+        
+        <form id="uploadForm" action="/analyze" method="post" enctype="multipart/form-data">
+            <div class="input-section">
+                <label class="input-label" for="dataType">Select Data Type:</label>
+                <select id="dataType" name="dataType" onchange="toggleInputFields()" class="input-field">
+                    <option value="" disabled selected>Select Type</option>
+                    <option value="text">Text</option>
+                    <option value="audio">Audio</option>
+                </select>
+            </div>
+            
+            <div class="conditional-input" id="textInput">
+                <label class="input-label" for="text">Enter Text:</label>
+                <textarea class="input-field" id="text" name="text" rows="4" placeholder="Enter text here..."></textarea>
+            </div>
+
+            <div class="conditional-input" id="audioInput">
+                <label class="input-label" for="audio">Upload Audio File:</label>
+                <input class="input-field" type="file" id="audio" name="audio" accept=".mp3, .wav">
+            </div>
+
+            <button type="submit">Analyze Sentiment</button>
+        </form>
+        
+        <div class="results-section" id="results">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script> <!-- Link to the external JavaScript file -->
+</body>
+</html>
